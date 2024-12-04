@@ -1,3 +1,4 @@
 .vscode
 /build
 complie_commands.json
+build/

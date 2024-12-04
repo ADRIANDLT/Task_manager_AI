@@ -50,4 +50,3 @@ We created a task manager that allows you to get more than 5 extra hours in your
 - Mark tasks as complete.
 - Notify users of overdue tasks.
 
-## File Structure

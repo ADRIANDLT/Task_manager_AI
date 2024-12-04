@@ -1,21 +1,48 @@
 cmake_minimum_required(VERSION 3.10)
-
-# Project Name
-project(TaskManagerProject)
+project(TaskManager_AI_Tests)
 
 # Set the C++ standard
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 11)
+
+# Ensure all targets use the same runtime library (dynamic linking)
+if (MSVC)
+    # Use the multi-threaded debug DLL (/MDd) for Debug builds
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MDd")
+
+    # Use the multi-threaded release DLL (/MD) for Release builds
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MD")
+endif()
+
+# Add Google Test subdirectory (this is the googletest repo you cloned)
+add_subdirectory(googletest)
 
 # Include directories for header files
-include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(include ${gtest_SOURCE_DIR}/include)
 
-
-# Add source files
-add_executable(TaskManager
-    main.cpp
-    src/TaskManager.cpp
-    src/AiTask.cpp
+# Add your source files (the actual project files)
+set(SRC_FILES
+    src/Aitask.cpp
+    src/DevopsTask.cpp
     src/HpcTask.cpp
     src/ProgrammingTask.cpp
-    src/DevopsTask.cpp
+    src/TaskManager.cpp
 )
+
+# Add the executable for your main program (without tests)
+add_executable(TaskManagerExec main.cpp ${SRC_FILES})
+
+# Add the test executable for Google Test
+add_executable(runTests test/test.cpp ${SRC_FILES})
+
+# Link Google Test libraries to the test executable
+target_link_libraries(runTests gtest gtest_main)
+
+# Ensure GoogleTest also uses the same runtime
+if (MSVC)
+    target_compile_options(gtest PRIVATE /MDd)
+    target_compile_options(gtest_main PRIVATE /MDd)
+endif()
+
+# Enable testing
+enable_testing()
+add_test(NAME TaskManagerTest COMMAND runTests)

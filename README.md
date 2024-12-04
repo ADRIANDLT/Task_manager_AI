@@ -1,4 +1,3 @@
-<<<<<<< feature-new
 # Task_manager_AI
 
 We created a task manager that allows you to get more than 5 extra hours in your week thanks to our optimization of your time.
@@ -50,25 +49,3 @@ We created a task manager that allows you to get more than 5 extra hours in your
 - Display tasks sorted by priority.
 - Mark tasks as complete.
 - Notify users of overdue tasks.
-
-## File Structure
-=======
-# Task_manager
-We created a task manager that allows you to:
-- Add tasks
-- Rank them by priority
-- Name and classify them
-- Mark them as complete
-
-The purpose of this tool is to improve student's workflow and organization. Having a simple interface that lets you see and manage all your tasks.
-
-## How to Set Up and Run locally
-
-
-## Interface
-
-
-## How we tested our tool
-
->>>>>>> main
-

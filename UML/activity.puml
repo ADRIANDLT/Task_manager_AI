@@ -1,0 +1,61 @@
+@startuml
+start
+:Display menu with 7 options;
+if (Option == 1: Add AI Task) then (Yes)
+  :Prompt user for task details (name, priority, estimated time);
+  :Create AI Task object;
+  :Add AI Task to Task Manager;
+  :Display success message: "AI Task added.";
+  :Go back to menu;
+else (No)
+  if (Option == 2: Add HPC Task) then (Yes)
+    :Prompt user for task details (name, priority, estimated time);
+    :Create HPC Task object;
+    :Add HPC Task to Task Manager;
+    :Display success message: "HPC Task added.";
+    :Go back to menu;
+  else (No)
+    if (Option == 3: Add Programming Task) then (Yes)
+      :Prompt user for task details (name, priority, estimated time);
+      :Create Programming Task object;
+      :Add Programming Task to Task Manager;
+      :Display success message: "Programming Task added.";
+      :Go back to menu;
+    else (No)
+      if (Option == 4: Add DevOps Task) then (Yes)
+        :Prompt user for task details (name, priority, estimated time);
+        :Create DevOps Task object;
+        :Add DevOps Task to Task Manager;
+        :Display success message: "DevOps Task added.";
+        :Go back to menu;
+      else (No)
+        if (Option == 5: Display Tasks by Priority) then (Yes)
+          :Sort tasks by priority;
+          :Display high, medium, and low priority tasks;
+          :Go back to menu;
+        else (No)
+          if (Option == 6: Mark Task as Complete) then (Yes)
+            :Prompt user for task name;
+            :Search for task in Task Manager;
+            if (Task found?) then (Yes)
+              :Mark task as complete;
+              :Display success message: "Task marked as complete.";
+            else (No)
+              :Display error message: "Task not found.";
+            endif
+            :Go back to menu;
+          else (No)
+            if (Option == 7: Exit) then (Yes)
+              :Display goodbye message;
+              stop
+            else (No)
+              :Display error message: "Invalid option.";
+              :Go back to menu;
+            endif
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+@enduml
